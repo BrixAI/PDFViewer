@@ -12,7 +12,7 @@ function PDF() {
   return <PDFViewer document1={document1} document2={document2} />;
 }
 
-export function Searchbar() {
+export default function Page() {
   return (
     // You could have a loading skeleton as the `fallback` too
     <Suspense>
