@@ -8,8 +8,9 @@ function PDF() {
   const searchParams = useSearchParams();
   const document1 = searchParams.get("doc1") || "";
   const document2 = searchParams.get("doc2") || "";
+  const theme = searchParams.get("theme") || "light";
 
-  return <PDFViewer document1={document1} document2={document2} />;
+  return <PDFViewer document1={document1} document2={document2} theme={theme}/>;
 }
 
 export default function Page() {

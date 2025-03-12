@@ -6,9 +6,11 @@ import { useEffect, useRef } from "react";
 export default function PDFViewer({
   document1 = "",
   document2 = "",
+  theme = "light",
 }: {
   document1?: string;
   document2?: string;
+  theme?: string;
 }) {
   const viewer = useRef<HTMLDivElement>(null);
   const isInitialized = useRef(false);
@@ -42,9 +44,11 @@ export default function PDFViewer({
 
         UI.enableFeatures([UI.Feature.ComparePages]);
         UI.enterMultiViewerMode();
+
+        UI.setTheme(theme);
       });
     });
-  }, [document1, document2]);
+  }, [document1, document2, theme]);
 
   return (
     <div className="flex h-screen min-h-screen w-full flex-col">
