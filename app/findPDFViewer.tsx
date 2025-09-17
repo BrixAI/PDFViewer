@@ -45,27 +45,6 @@ export default function FindPDFViewer({
           }
         });
 
-        // // Get the document viewer
-        // const documentViewer = Core.getDocumentViewers()[0];
-
-        // // Load the document and perform search when ready
-        // documentViewer.addEventListener("documentLoaded", async () => {
-        //   if (search) {
-        //     // Perform the search
-        //     UI.searchText(search, {
-        //       caseSensitive: false,
-        //       wholeWord: false,
-        //       wildcard: false,
-        //       regex: false,
-        //     });
-        //   }
-        // });
-
-        // // Load the document
-        // if (document) {
-        //   documentViewer.loadDocument(document);
-        // }
-
         // Enable search-related features
         UI.enableFeatures([UI.Feature.TextSelection, UI.Feature.Search]);
 
