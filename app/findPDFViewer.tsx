@@ -33,17 +33,41 @@ export default function FindPDFViewer({
       ).then((instance: WebViewerInstance) => {
         const { UI, Core } = instance;
 
-        UI.addEventListener(UI.Events.MULTI_VIEWER_READY, async () => {
-          await Promise.all([
-            Core.getDocumentViewers()[0].loadDocument(document),
-            Core.getDocumentViewers()[1].loadDocument(search),
-          ]);
-          UI.startTextComparison();
-          UI.enableMultiViewerSync();
+        UI.addEventListener(UI.Events.VIEWER_LOADED, async () => {
+          await Core.getDocumentViewers()[0].loadDocument(document);
+          if (search) {
+            UI.searchText(search, {
+              caseSensitive: false,
+              wholeWord: false,
+              wildcard: false,
+              regex: false,
+            });
+          }
         });
 
-        UI.enableFeatures([UI.Feature.ComparePages]);
-        UI.enterMultiViewerMode();
+        // // Get the document viewer
+        // const documentViewer = Core.getDocumentViewers()[0];
+
+        // // Load the document and perform search when ready
+        // documentViewer.addEventListener("documentLoaded", async () => {
+        //   if (search) {
+        //     // Perform the search
+        //     UI.searchText(search, {
+        //       caseSensitive: false,
+        //       wholeWord: false,
+        //       wildcard: false,
+        //       regex: false,
+        //     });
+        //   }
+        // });
+
+        // // Load the document
+        // if (document) {
+        //   documentViewer.loadDocument(document);
+        // }
+
+        // Enable search-related features
+        UI.enableFeatures([UI.Feature.TextSelection, UI.Feature.Search]);
 
         UI.setTheme(theme);
       });
