@@ -48,6 +48,9 @@ export default function FindPDFViewer({
         // Enable search-related features
         UI.enableFeatures([UI.Feature.TextSelection, UI.Feature.Search]);
 
+        // Disable zoom features
+        UI.disableFeatures([UI.Feature.MouseWheelZoom]);
+
         UI.setTheme(theme);
       });
     });
