@@ -3,7 +3,7 @@
 import { WebViewerInstance } from "@pdftron/webviewer";
 import { useEffect, useRef } from "react";
 
-export default function PDFViewer({
+export default function ComparePDFViewer({
   document1 = "",
   document2 = "",
   theme = "light",
