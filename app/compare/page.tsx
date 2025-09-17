@@ -11,13 +11,11 @@ function Compare() {
   const theme = searchParams.get("theme") || "light";
 
   return (
-    <Suspense>
-      <ComparePDFViewer
-        document1={document1}
-        document2={document2}
-        theme={theme}
-      />
-    </Suspense>
+    <ComparePDFViewer
+      document1={document1}
+      document2={document2}
+      theme={theme}
+    />
   );
 }
 

@@ -10,11 +10,7 @@ function Find() {
   const search = searchParams.get("search") || "";
   const theme = searchParams.get("theme") || "light";
 
-  return (
-    <Suspense>
-      <FindPDFViewer document={document} search={search} theme={theme} />
-    </Suspense>
-  );
+  return <FindPDFViewer document={document} search={search} theme={theme} />;
 }
 
 export default function Page() {
