@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import FindPDFViewer from "../findPDFViewer";
 
-export default function Find() {
+function Find() {
   const searchParams = useSearchParams();
   const document = searchParams.get("doc") || "";
   const search = searchParams.get("search") || "";
@@ -13,6 +13,14 @@ export default function Find() {
   return (
     <Suspense>
       <FindPDFViewer document={document} search={search} theme={theme} />
+    </Suspense>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense>
+      <Find />
     </Suspense>
   );
 }
