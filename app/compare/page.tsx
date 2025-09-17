@@ -2,22 +2,21 @@
 
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
-import PDFViewer from "./pdfViewer";
+import ComparePDFViewer from "../comparePDFViewer";
 
-function PDF() {
+export default function Compare() {
   const searchParams = useSearchParams();
   const document1 = searchParams.get("doc1") || "";
   const document2 = searchParams.get("doc2") || "";
   const theme = searchParams.get("theme") || "light";
 
-  return <PDFViewer document1={document1} document2={document2} theme={theme}/>;
-}
-
-export default function Page() {
   return (
-    // You could have a loading skeleton as the `fallback` too
     <Suspense>
-      <PDF />
+      <ComparePDFViewer
+        document1={document1}
+        document2={document2}
+        theme={theme}
+      />
     </Suspense>
   );
 }
